@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	
+	<context:annotation-config/>
+	
+	<!-- 自动扫描且只扫描@Controller -->
+	<context:component-scan base-package="com.yuchengtech.mobile.console.controller" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+		
+	<!--自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,是spring MVC为@Controllers分发请求所必须的-->
+	<mvc:annotation-driven/>
+	
+	<!-- 将无法mapping到Controller的path(访问到静态的文件，如jpg,js,css)交给default servlet handler处理 -->
+	<mvc:default-servlet-handler/>
+	
+	<!-- 定义JSP文件的位置 -->  
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	<!--文件上传-->
+    <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="defaultEncoding" value="UTF-8"/>  
+        <!-- 指定所上传文件的总大小不能超过200KB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->  
+        <property name="maxUploadSize" value="40000000"/>  
+    </bean>  
+      
+    <!-- SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->  
+    <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 -->  
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+        <property name="exceptionMappings">  
+            <props>  
+                <!-- 遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/jsp/error_fileupload.jsp页面 -->  
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error_fileupload</prop>  
+            </props>  
+        </property>  
+    </bean>
+	
+	<!-- 自动扫描且只扫描@Controller -->
+	<!--
+	<context:component-scan base-package="com.yuchengtech.mobile.console.controller" use-default-filters="false">
+			<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>-->
+
+	<!--  由<mvc:annotation-driven/>注册
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
+			<property name="messageConverters">
+				<list>
+					<ref bean="mappingJacksonHttpMessageConverter"/>
+				</list>
+			</property>
+		</bean>-->
+	
+	
+	<!--
+	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+			<property name="supportedMediaTypes">
+				<list>
+					<value>application/json;charset=UTF-8</value>
+				</list>
+			</property>
+		</bean>-->
+	<!--当使用 <context:component-scan/> 后，就可以将 <context:annotation-config/> 移除了-->
+
+	
+	<!-- 定义无Controller的path<->view直接映射 -->
+	<!--<mvc:view-controller path="/web/mashup-client" view-name="/web/mashup-client"/>-->
+	 <bean class="com.yuchengtech.mobile.console.service.InitDataService"/>  
+	
+</beans>

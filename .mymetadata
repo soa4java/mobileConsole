@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="mobileConsole"
+  id="myeclipse.1413270584853"
+  context-root="/mobileConsole"
+  j2ee-spec="5.0"
+  archive="mobileConsole.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

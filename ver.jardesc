@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="E:/mobile/server/mobileServer/WebContent/WEB-INF/lib/ver.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/mobileConsole/ver.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.mobile.console.dao.ver"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.core.utils.reflection"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.mobile.console.common{EntityInfo.java"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.mobile.console.service.ver"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.core.orm"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.mobile.console.utils"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.mobile.console.dao.account{ActionsDefDao.java"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.mobile.console.entity.account{ActionsDef.java"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.mobile.console.entity.ver"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.core.utils"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.mobile.console.service{EntityManager.java"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.mobile.console.service.account{ActionsDefManager.java"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.core.orm.hibernate"/>
+        <javaElement handleIdentifier="=mobileConsole/src\/main\/java&lt;com.yuchengtech.mobile.console.service{InitDataService.java"/>
+    </selectedElements>
+</jardesc>
